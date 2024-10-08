@@ -2,7 +2,10 @@
   "extends": "@glzr/style-guide/tsconfig/solidjs-lib",
   "compilerOptions": {
     "outDir": "dist",
-    "composite": false
+    "composite": false,
+    "paths": {
+      "~/*": ["./src/*"]
+    }
   },
   "include": ["src"]
 }
