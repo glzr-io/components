@@ -43,13 +43,13 @@ export function NumberInput(props: NumberInputProps) {
         'relative rounded-md transition-shadow focus-within:outline-none focus-within:ring-[1.5px] focus-within:ring-ring',
         local.class,
       )}
+      {...rest}
     >
       <_NumberField.Input
         class={
           'flex h-9 w-full rounded-md border border-input bg-transparent px-10 py-1 text-center text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50'
         }
         onBlur={() => props.onBlur?.()}
-        {...rest}
       />
 
       <_NumberField.DecrementTrigger
