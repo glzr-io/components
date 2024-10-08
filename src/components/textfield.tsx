@@ -26,7 +26,7 @@ export const TextFieldRoot = <T extends ValidComponent = 'div'>(
   );
 };
 
-export const textfieldLabel = cva(
+const textfieldLabel = cva(
   'text-sm data-[disabled]:cursor-not-allowed data-[disabled]:opacity-70 font-medium',
   {
     variants: {
