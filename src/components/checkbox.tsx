@@ -1,40 +1,44 @@
+import { Checkbox as _Checkbox } from '@kobalte/core/checkbox';
+import { type ComponentProps, splitProps } from 'solid-js';
+
+import type { WithOverride } from '~/utils';
 import {
-  type CheckboxControlProps,
-  Checkbox as CheckboxPrimitive,
-} from '@kobalte/core/checkbox';
-import type { PolymorphicProps } from '@kobalte/core/polymorphic';
-import { type ValidComponent, type VoidProps, splitProps } from 'solid-js';
+  FORM_INPUT_PROP_NAMES,
+  makeFieldComponent,
+  type FormInputProps,
+} from './forms';
 
-import { cn } from '~/utils';
+export type CheckboxFieldProps = ComponentProps<typeof CheckboxField>;
 
-export const CheckboxLabel = CheckboxPrimitive.Label;
-export const Checkbox = CheckboxPrimitive;
-export const CheckboxErrorMessage = CheckboxPrimitive.ErrorMessage;
-export const CheckboxDescription = CheckboxPrimitive.Description;
+export const CheckboxField = makeFieldComponent({
+  inputComponent: CheckboxInput,
+  inputPropNames: FORM_INPUT_PROP_NAMES,
+});
 
-type checkboxControlProps<T extends ValidComponent = 'div'> = VoidProps<
-  CheckboxControlProps<T> & { class?: string }
+export interface CheckboxInputOptions
+  extends FormInputProps<HTMLInputElement, boolean> {}
+
+export type CheckboxInputProps = WithOverride<
+  ComponentProps<'div'>,
+  CheckboxInputOptions
 >;
 
-export const CheckboxControl = <T extends ValidComponent = 'div'>(
-  props: PolymorphicProps<T, checkboxControlProps<T>>,
-) => {
-  const [local, rest] = splitProps(props as checkboxControlProps, [
-    'class',
-    'children',
-  ]);
+export function CheckboxInput(props: CheckboxInputProps) {
+  const [_, rest] = splitProps(props, FORM_INPUT_PROP_NAMES);
 
   return (
-    <>
-      <CheckboxPrimitive.Input class="[&:focus-visible+div]:outline-none [&:focus-visible+div]:ring-[1.5px] [&:focus-visible+div]:ring-ring [&:focus-visible+div]:ring-offset-2 [&:focus-visible+div]:ring-offset-background" />
-      <CheckboxPrimitive.Control
-        class={cn(
-          'h-4 w-4 shrink-0 rounded-sm border border-primary shadow transition-shadow focus-visible:outline-none focus-visible:ring-[1.5px] focus-visible:ring-ring data-[disabled]:cursor-not-allowed data-[checked]:bg-primary data-[checked]:text-primary-foreground data-[disabled]:opacity-50',
-          local.class,
-        )}
-        {...rest}
+    <_Checkbox
+      checked={props.value}
+      onChange={value => props.onChange?.(value)}
+      {...rest}
+    >
+      <_Checkbox.Input class="[&:focus-visible+div]:outline-none [&:focus-visible+div]:ring-[1.5px] [&:focus-visible+div]:ring-ring [&:focus-visible+div]:ring-offset-2 [&:focus-visible+div]:ring-offset-background" />
+      <_Checkbox.Control
+        class={
+          'h-4 w-4 shrink-0 rounded-sm border border-primary shadow transition-shadow focus-visible:outline-none focus-visible:ring-[1.5px] focus-visible:ring-ring data-[disabled]:cursor-not-allowed data-[checked]:bg-primary data-[checked]:text-primary-foreground data-[disabled]:opacity-50'
+        }
       >
-        <CheckboxPrimitive.Indicator class="flex items-center justify-center text-current">
+        <_Checkbox.Indicator class="flex items-center justify-center text-current">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -50,8 +54,8 @@ export const CheckboxControl = <T extends ValidComponent = 'div'>(
             />
             <title>Checkbox</title>
           </svg>
-        </CheckboxPrimitive.Indicator>
-      </CheckboxPrimitive.Control>
-    </>
+        </_Checkbox.Indicator>
+      </_Checkbox.Control>
+    </_Checkbox>
   );
-};
+}
