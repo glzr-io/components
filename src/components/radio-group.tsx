@@ -2,8 +2,7 @@ import { cn } from '~/utils';
 import type { PolymorphicProps } from '@kobalte/core/polymorphic';
 import type { RadioGroupItemControlProps } from '@kobalte/core/radio-group';
 import { RadioGroup as RadioGroupPrimitive } from '@kobalte/core/radio-group';
-import type { ValidComponent, VoidProps } from 'solid-js';
-import { splitProps } from 'solid-js';
+import { type ValidComponent, type VoidProps, splitProps } from 'solid-js';
 
 export const RadioGroupDescription = RadioGroupPrimitive.Description;
 export const RadioGroupErrorMessage = RadioGroupPrimitive.ErrorMessage;

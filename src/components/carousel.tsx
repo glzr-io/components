@@ -1,13 +1,11 @@
-import { cn } from '~/utils';
-import type { CreateEmblaCarouselType } from 'embla-carousel-solid';
-import createEmblaCarousel from 'embla-carousel-solid';
-import type {
-  Accessor,
-  ComponentProps,
-  ParentProps,
-  VoidProps,
-} from 'solid-js';
+import createEmblaCarousel, {
+  type CreateEmblaCarouselType,
+} from 'embla-carousel-solid';
 import {
+  type Accessor,
+  type ComponentProps,
+  type ParentProps,
+  type VoidProps,
   createContext,
   createEffect,
   createMemo,
@@ -17,6 +15,8 @@ import {
   splitProps,
   useContext,
 } from 'solid-js';
+
+import { cn } from '~/utils';
 import { Button } from './button';
 
 export type CarouselApi = CreateEmblaCarouselType[1];

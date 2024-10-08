@@ -1,4 +1,3 @@
-import { cn } from '~/utils';
 import type {
   ContextMenuCheckboxItemProps,
   ContextMenuContentProps,
@@ -19,6 +18,8 @@ import type {
   VoidProps,
 } from 'solid-js';
 import { splitProps } from 'solid-js';
+
+import { cn } from '~/utils';
 
 export const ContextMenu = ContextMenuPrimitive;
 export const ContextMenuTrigger = ContextMenuPrimitive.Trigger;

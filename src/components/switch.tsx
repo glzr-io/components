@@ -5,8 +5,12 @@ import type {
   SwitchThumbProps,
 } from '@kobalte/core/switch';
 import { Switch as SwitchPrimitive } from '@kobalte/core/switch';
-import type { ParentProps, ValidComponent, VoidProps } from 'solid-js';
-import { splitProps } from 'solid-js';
+import {
+  type ParentProps,
+  splitProps,
+  type ValidComponent,
+  type VoidProps,
+} from 'solid-js';
 
 export const SwitchLabel = SwitchPrimitive.Label;
 export const Switch = SwitchPrimitive;

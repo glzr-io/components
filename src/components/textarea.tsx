@@ -2,8 +2,7 @@ import { cn } from '~/utils';
 import type { PolymorphicProps } from '@kobalte/core/polymorphic';
 import type { TextFieldTextAreaProps } from '@kobalte/core/text-field';
 import { TextArea as TextFieldPrimitive } from '@kobalte/core/text-field';
-import type { ValidComponent, VoidProps } from 'solid-js';
-import { splitProps } from 'solid-js';
+import { type ValidComponent, type VoidProps, splitProps } from 'solid-js';
 
 type textAreaProps<T extends ValidComponent = 'textarea'> = VoidProps<
   TextFieldTextAreaProps<T> & {

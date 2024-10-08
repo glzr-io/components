@@ -8,10 +8,8 @@ import type {
   TabsTriggerProps,
 } from '@kobalte/core/tabs';
 import { Tabs as TabsPrimitive } from '@kobalte/core/tabs';
-import type { VariantProps } from 'class-variance-authority';
-import { cva } from 'class-variance-authority';
-import type { ValidComponent, VoidProps } from 'solid-js';
-import { splitProps } from 'solid-js';
+import { type VariantProps, cva } from 'class-variance-authority';
+import { type ValidComponent, type VoidProps, splitProps } from 'solid-js';
 
 type tabsProps<T extends ValidComponent = 'div'> = TabsRootProps<T> & {
   class?: string;

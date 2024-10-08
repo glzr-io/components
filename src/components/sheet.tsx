@@ -6,8 +6,7 @@ import type {
 } from '@kobalte/core/dialog';
 import { Dialog as DialogPrimitive } from '@kobalte/core/dialog';
 import type { PolymorphicProps } from '@kobalte/core/polymorphic';
-import type { VariantProps } from 'class-variance-authority';
-import { cva } from 'class-variance-authority';
+import { type VariantProps, cva } from 'class-variance-authority';
 import type {
   ComponentProps,
   ParentProps,

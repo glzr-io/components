@@ -1,11 +1,10 @@
-import { cn } from '~/utils';
-import type {
-  AlertDialogCloseButtonProps,
-  AlertDialogContentProps,
-  AlertDialogDescriptionProps,
-  AlertDialogTitleProps,
+import {
+  type AlertDialogCloseButtonProps,
+  type AlertDialogContentProps,
+  type AlertDialogDescriptionProps,
+  type AlertDialogTitleProps,
+  AlertDialog as AlertDialogPrimitive,
 } from '@kobalte/core/alert-dialog';
-import { AlertDialog as AlertDialogPrimitive } from '@kobalte/core/alert-dialog';
 import type { PolymorphicProps } from '@kobalte/core/polymorphic';
 import type {
   ComponentProps,
@@ -13,7 +12,9 @@ import type {
   ValidComponent,
 } from 'solid-js';
 import { splitProps } from 'solid-js';
+
 import { buttonVariants } from './button';
+import { cn } from '~/utils';
 
 export const AlertDialog = AlertDialogPrimitive;
 export const AlertDialogTrigger = AlertDialogPrimitive.Trigger;

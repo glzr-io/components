@@ -8,8 +8,7 @@ import type {
   ToastTitleProps,
 } from '@kobalte/core/toast';
 import { Toast as ToastPrimitive } from '@kobalte/core/toast';
-import type { VariantProps } from 'class-variance-authority';
-import { cva } from 'class-variance-authority';
+import { type VariantProps, cva } from 'class-variance-authority';
 import type {
   ComponentProps,
   ValidComponent,

@@ -1,11 +1,13 @@
-import { cn } from '~/utils';
-import type { AlertRootProps } from '@kobalte/core/alert';
-import { Alert as AlertPrimitive } from '@kobalte/core/alert';
+import {
+  type AlertRootProps,
+  Alert as AlertPrimitive,
+} from '@kobalte/core/alert';
 import type { PolymorphicProps } from '@kobalte/core/polymorphic';
-import type { VariantProps } from 'class-variance-authority';
-import { cva } from 'class-variance-authority';
+import { type VariantProps, cva } from 'class-variance-authority';
 import type { ComponentProps, ValidComponent } from 'solid-js';
 import { splitProps } from 'solid-js';
+
+import { cn } from '~/utils';
 
 export const alertVariants = cva(
   'relative w-full rounded-lg border px-4 py-3 text-sm [&:has(svg)]:pl-11 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground',

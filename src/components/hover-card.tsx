@@ -2,8 +2,7 @@ import { cn } from '~/utils';
 import type { HoverCardContentProps } from '@kobalte/core/hover-card';
 import { HoverCard as HoverCardPrimitive } from '@kobalte/core/hover-card';
 import type { PolymorphicProps } from '@kobalte/core/polymorphic';
-import type { ValidComponent } from 'solid-js';
-import { splitProps } from 'solid-js';
+import { splitProps, type ValidComponent } from 'solid-js';
 
 export const HoverCard = HoverCardPrimitive;
 export const HoverCardTrigger = HoverCardPrimitive.Trigger;
