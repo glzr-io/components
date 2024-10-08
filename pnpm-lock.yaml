@@ -20,6 +20,9 @@ importers:
       class-variance-authority:
         specifier: 0.7.0
         version: 0.7.0
+      embla-carousel-solid:
+        specifier: 8.3.0
+        version: 8.3.0(solid-js@1.9.2)
       smorf:
         specifier: 1.0.0
         version: 1.0.0(solid-js@1.9.2)
@@ -35,7 +38,7 @@ importers:
     devDependencies:
       '@glzr/style-guide':
         specifier: 1.1.0
-        version: 1.1.0(prettier@3.1.1)(typescript@5.0.4)
+        version: 1.1.0(prettier@3.1.1)(typescript@5.5.3)
       prettier:
         specifier: 3.1.1
         version: 3.1.1
@@ -44,13 +47,13 @@ importers:
         version: 1.9.2
       tsup:
         specifier: 7.2.0
-        version: 7.2.0(postcss@8.4.47)(typescript@5.0.4)
+        version: 7.2.0(postcss@8.4.47)(typescript@5.5.3)
       tsup-preset-solid:
         specifier: 2.1.0
-        version: 2.1.0(esbuild@0.18.20)(solid-js@1.9.2)(tsup@7.2.0(postcss@8.4.47)(typescript@5.0.4))
+        version: 2.1.0(esbuild@0.18.20)(solid-js@1.9.2)(tsup@7.2.0(postcss@8.4.47)(typescript@5.5.3))
       typescript:
-        specifier: 5.0.4
-        version: 5.0.4
+        specifier: 5.5.3
+        version: 5.5.3
 
 packages:
 
@@ -713,6 +716,19 @@ packages:
 
   electron-to-chromium@1.5.33:
     resolution: {integrity: sha512-+cYTcFB1QqD4j4LegwLfpCNxifb6dDFUAwk6RsLusCwIaZI6or2f+q8rs5tTB2YC53HhOlIbEaqHMAAC8IOIwA==}
+
+  embla-carousel-reactive-utils@8.3.0:
+    resolution: {integrity: sha512-EYdhhJ302SC4Lmkx8GRsp0sjUhEN4WyFXPOk0kGu9OXZSRMmcBlRgTvHcq8eKJE1bXWBsOi1T83B+BSSVZSmwQ==}
+    peerDependencies:
+      embla-carousel: 8.3.0
+
+  embla-carousel-solid@8.3.0:
+    resolution: {integrity: sha512-QYwzYD+X65oX7agioW3BXEONH1aIrJDW5VgsDLy+Cqf3SzxMLcgh6V9BB8etdaQ6v+PRRZy/t12kkvCX1PFK0g==}
+    peerDependencies:
+      solid-js: ^1.0.0
+
+  embla-carousel@8.3.0:
+    resolution: {integrity: sha512-Ve8dhI4w28qBqR8J+aMtv7rLK89r1ZA5HocwFz6uMB/i5EiC7bGI7y+AM80yAVUJw3qqaZYK7clmZMUR8kM3UA==}
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -1378,9 +1394,9 @@ packages:
       typescript:
         optional: true
 
-  typescript@5.0.4:
-    resolution: {integrity: sha512-cW9T5W9xY37cc+jfEnaUvX91foxtHkza3Nw3wkoF4sSlKn0MONdkdEndig/qPBWXNkmplh3NzayQzCiHM4/hqw==}
-    engines: {node: '>=12.20'}
+  typescript@5.5.3:
+    resolution: {integrity: sha512-/hreyEujaB0w76zKo6717l3L0o/qEUtRgdvUBvlkhoWeOVMjMuHNHk0BRBzikzuGDqNmPQbg5ifMEqsHLiIUcQ==}
+    engines: {node: '>=14.17'}
     hasBin: true
 
   untildify@4.0.0:
@@ -1749,13 +1765,13 @@ snapshots:
 
   '@floating-ui/utils@0.2.8': {}
 
-  '@glzr/style-guide@1.1.0(prettier@3.1.1)(typescript@5.0.4)':
+  '@glzr/style-guide@1.1.0(prettier@3.1.1)(typescript@5.5.3)':
     dependencies:
       prettier-plugin-astro: 0.12.3
       prettier-plugin-packagejson: 2.4.5(prettier@3.1.1)
     optionalDependencies:
       prettier: 3.1.1
-      typescript: 5.0.4
+      typescript: 5.5.3
 
   '@internationalized/date@3.5.6':
     dependencies:
@@ -2095,6 +2111,18 @@ snapshots:
   eastasianwidth@0.2.0: {}
 
   electron-to-chromium@1.5.33: {}
+
+  embla-carousel-reactive-utils@8.3.0(embla-carousel@8.3.0):
+    dependencies:
+      embla-carousel: 8.3.0
+
+  embla-carousel-solid@8.3.0(solid-js@1.9.2):
+    dependencies:
+      embla-carousel: 8.3.0
+      embla-carousel-reactive-utils: 8.3.0(embla-carousel@8.3.0)
+      solid-js: 1.9.2
+
+  embla-carousel@8.3.0: {}
 
   emoji-regex@8.0.0: {}
 
@@ -2708,16 +2736,16 @@ snapshots:
 
   tslib@2.7.0: {}
 
-  tsup-preset-solid@2.1.0(esbuild@0.18.20)(solid-js@1.9.2)(tsup@7.2.0(postcss@8.4.47)(typescript@5.0.4)):
+  tsup-preset-solid@2.1.0(esbuild@0.18.20)(solid-js@1.9.2)(tsup@7.2.0(postcss@8.4.47)(typescript@5.5.3)):
     dependencies:
       esbuild-plugin-solid: 0.5.0(esbuild@0.18.20)(solid-js@1.9.2)
-      tsup: 7.2.0(postcss@8.4.47)(typescript@5.0.4)
+      tsup: 7.2.0(postcss@8.4.47)(typescript@5.5.3)
     transitivePeerDependencies:
       - esbuild
       - solid-js
       - supports-color
 
-  tsup@7.2.0(postcss@8.4.47)(typescript@5.0.4):
+  tsup@7.2.0(postcss@8.4.47)(typescript@5.5.3):
     dependencies:
       bundle-require: 4.2.1(esbuild@0.18.20)
       cac: 6.7.14
@@ -2735,12 +2763,12 @@ snapshots:
       tree-kill: 1.2.2
     optionalDependencies:
       postcss: 8.4.47
-      typescript: 5.0.4
+      typescript: 5.5.3
     transitivePeerDependencies:
       - supports-color
       - ts-node
 
-  typescript@5.0.4: {}
+  typescript@5.5.3: {}
 
   untildify@4.0.0: {}
 
