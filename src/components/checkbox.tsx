@@ -32,7 +32,11 @@ export function CheckboxInput(props: CheckboxInputProps) {
       onChange={value => props.onChange?.(value)}
       {...rest}
     >
-      <_Checkbox.Input class="[&:focus-visible+div]:outline-none [&:focus-visible+div]:ring-[1.5px] [&:focus-visible+div]:ring-ring [&:focus-visible+div]:ring-offset-2 [&:focus-visible+div]:ring-offset-background" />
+      <_Checkbox.Input
+        onBlur={() => props.onBlur?.()}
+        class="[&:focus-visible+div]:outline-none [&:focus-visible+div]:ring-[1.5px] [&:focus-visible+div]:ring-ring [&:focus-visible+div]:ring-offset-2 [&:focus-visible+div]:ring-offset-background"
+      />
+
       <_Checkbox.Control
         class={
           'h-4 w-4 shrink-0 rounded-sm border border-primary shadow transition-shadow focus-visible:outline-none focus-visible:ring-[1.5px] focus-visible:ring-ring data-[disabled]:cursor-not-allowed data-[checked]:bg-primary data-[checked]:text-primary-foreground data-[disabled]:opacity-50'
