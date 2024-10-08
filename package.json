@@ -1,0 +1,48 @@
+{
+  "name": "@glzr/components",
+  "version": "1.0.0",
+  "description": "A component library for SolidJS.",
+  "keywords": [
+    "solidjs",
+    "solid",
+    "ui",
+    "components"
+  ],
+  "repository": "github:glzr-io/components",
+  "license": "MIT",
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "solid": "./dist/index.jsx",
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./styles": "./dist/index.css"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup",
+    "dev": "npm run build -- --watch src",
+    "format": "prettier --write .",
+    "lint": "prettier --check ."
+  },
+  "prettier": "@glzr/style-guide/prettier",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@glzr/style-guide": "1.1.0",
+    "prettier": "3.1.1",
+    "solid-js": "1.8.11",
+    "tsup": "7.2.0",
+    "tsup-preset-solid": "2.1.0",
+    "typescript": "5.0.4"
+  },
+  "peerDependencies": {
+    "solid-js": ">=1.7.0"
+  }
+}
