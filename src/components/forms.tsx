@@ -166,6 +166,23 @@ export type CustomFormFieldProps<T extends ValidComponent> = WithOverride<
 >;
 
 /**
+ * Constant array of {@link FormInputProps} prop names.
+ */
+export const FORM_INPUT_PROP_NAMES = [
+  'value',
+  'ref',
+  'onChange',
+  'onBlur',
+] as const;
+
+export interface FormInputProps<T, U> {
+  value?: U;
+  ref?: (element: T) => void;
+  onChange?: (value: U) => void;
+  onBlur?: () => void;
+}
+
+/**
  * Creates a custom form field component by wrapping an input component
  * with {@link FormField}.
  */
