@@ -3,7 +3,6 @@ import {
   type NumberFieldRootProps as _NumberFieldRootProps,
   NumberField as _NumberField,
 } from '@kobalte/core/number-field';
-import type { PolymorphicProps as _PolymorphicProps } from '@kobalte/core/polymorphic';
 import { type ComponentProps, splitProps } from 'solid-js';
 
 import { cn, type WithOverride } from '~/utils';

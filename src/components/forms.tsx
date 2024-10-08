@@ -79,7 +79,7 @@ export function FormField(props: FormFieldProps) {
   );
 }
 
-const textfieldLabel = cva(
+const labelVariants = cva(
   'text-sm data-[disabled]:cursor-not-allowed data-[disabled]:opacity-70 font-medium',
   {
     variants: {
@@ -110,7 +110,7 @@ export function FormLabel(props: FormLabelProps) {
   return (
     <label
       {...others}
-      class={cn(textfieldLabel(), others.class)}
+      class={cn(labelVariants(), others.class)}
       for={props.for}
     >
       {props.children}
@@ -128,7 +128,7 @@ export function FormError(props: FormErrorProps) {
   return (
     <small
       {...others}
-      class={cn(textfieldLabel({ error: true }), others.class)}
+      class={cn(labelVariants({ error: true }), others.class)}
     >
       {props.children}
     </small>
@@ -146,7 +146,7 @@ export function FormDescription(props: FormDescriptionProps) {
     <small
       {...others}
       class={cn(
-        textfieldLabel({ description: true, label: false }),
+        labelVariants({ description: true, label: false }),
         others.class,
       )}
     >
