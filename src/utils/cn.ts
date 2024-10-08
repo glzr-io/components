@@ -1,12 +1,13 @@
 import { twMerge } from 'tailwind-merge';
 
 export const cn = (...classValues: ClassValue[]) =>
-  twMerge(mergeClasses(classValues));
+  twMerge(mergeClasses(...classValues));
 
 type ClassValue =
   | string
   | string[]
   | Record<string, boolean>
+  | false
   | null
   | undefined;
 
@@ -19,7 +20,11 @@ function mergeClasses(...classValues: ClassValue[]): string {
   let classString = '';
 
   for (const classValue of classValues) {
-    if (classValue === null || classValue === undefined) {
+    if (
+      classValue === null ||
+      classValue === undefined ||
+      classValue === false
+    ) {
       continue;
     }
 
