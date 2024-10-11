@@ -23,7 +23,7 @@ export * from './popover';
 export * from './progress';
 export * from './radio-group';
 export * from './resizable';
-export * from './select';
+export * from './select-input';
 export * from './separator';
 export * from './sheet';
 export * from './skeleton';
