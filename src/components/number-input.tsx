@@ -38,7 +38,7 @@ export function NumberInput(props: NumberInputProps) {
   return (
     <_NumberField
       rawValue={local.value}
-      onRawValueChange={local.onChange}
+      onRawValueChange={val => local.onChange?.(val)}
       class={cn(
         'relative rounded-md transition-shadow focus-within:outline-none focus-within:ring-[1.5px] focus-within:ring-ring',
         local.class,

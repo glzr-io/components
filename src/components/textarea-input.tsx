@@ -1,14 +1,4 @@
-import {
-  type TextFieldTextAreaProps as _TextFieldTextAreaProps,
-  TextArea as _TextArea,
-  TextField as _TextField,
-} from '@kobalte/core/text-field';
-import {
-  type ComponentProps,
-  type ValidComponent,
-  type VoidProps,
-  splitProps,
-} from 'solid-js';
+import { type ComponentProps, splitProps } from 'solid-js';
 
 import { cn, type WithOverride } from '~/utils';
 import {
@@ -28,25 +18,26 @@ export interface TextAreaInputOptions
   extends FormInputProps<HTMLTextAreaElement, string> {}
 
 export type TextAreaInputProps = WithOverride<
-  ComponentProps<'div'>,
+  ComponentProps<'textarea'>,
   TextAreaInputOptions
 >;
 
 export function TextAreaInput(props: TextAreaInputProps) {
-  const [local, rest] = splitProps(props, FORM_INPUT_PROP_NAMES);
+  const [local, rest] = splitProps(props, [
+    ...FORM_INPUT_PROP_NAMES,
+    'class',
+  ]);
 
   return (
-    <_TextField
+    <textarea
       value={local.value}
-      onChange={local.onChange}
+      onChange={e => local.onChange?.(e.target.value)}
       onBlur={() => local.onBlur?.()}
+      class={cn(
+        'flex min-h-[60px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm transition-shadow placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-[1.5px] focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50',
+        local.class,
+      )}
       {...rest}
-    >
-      <_TextArea
-        class={
-          'flex min-h-[60px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm transition-shadow placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-[1.5px] focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50'
-        }
-      />
-    </_TextField>
+    />
   );
 }
