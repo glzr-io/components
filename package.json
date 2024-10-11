@@ -20,11 +20,17 @@
         "default": "./dist/index.js"
       }
     },
-    "./styles": "./dist/index.css"
+    "./tailwind.config.cjs": "./tailwind.config.cjs"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "tailwind.config.cjs",
+    "README.md",
+    "LICENSE.md"
+  ],
   "scripts": {
     "build": "tsup",
     "dev": "npm run build -- --watch src",
