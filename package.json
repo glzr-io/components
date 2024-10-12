@@ -42,6 +42,7 @@
     "@corvu/drawer": "0.2.2",
     "@corvu/resizable": "0.2.3",
     "@kobalte/core": "0.13.7",
+    "@tabler/icons-solidjs": "3.19.0",
     "class-variance-authority": "0.7.0",
     "embla-carousel-solid": "8.3.0",
     "smorf": "1.0.0",
