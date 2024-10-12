@@ -11,7 +11,6 @@ export * from './combobox';
 export * from './context-menu';
 export * from './dialog';
 export * from './drawer';
-export * from './dropdown-button';
 export * from './dropdown-menu';
 export * from './forms';
 export * from './hover-card';
