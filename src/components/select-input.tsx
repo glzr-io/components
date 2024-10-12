@@ -116,8 +116,8 @@ export function SelectInput<T>(props: SelectInputProps<T>) {
           'flex h-9 w-full items-center justify-between rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm ring-offset-background transition-shadow placeholder:text-muted-foreground focus:outline-none focus-visible:ring-[1.5px] focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50'
         }
       >
-        <_Select.Value<string>>
-          {state => state.selectedOption()}
+        <_Select.Value<SelectOption<T>>>
+          {state => state.selectedOption().label}
         </_Select.Value>
 
         <_Select.Icon
