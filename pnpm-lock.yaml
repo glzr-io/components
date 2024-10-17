@@ -26,18 +26,9 @@ importers:
       embla-carousel-solid:
         specifier: 8.3.0
         version: 8.3.0(solid-js@1.9.2)
-      smorf:
-        specifier: 1.0.0
-        version: 1.0.0(solid-js@1.9.2)
       tailwind-merge:
         specifier: 2.5.3
         version: 2.5.3
-      tailwindcss:
-        specifier: '3.4.13 '
-        version: 3.4.13
-      tailwindcss-animate:
-        specifier: 1.0.7
-        version: 1.0.7(tailwindcss@3.4.13)
     devDependencies:
       '@glzr/style-guide':
         specifier: 1.1.0
@@ -48,6 +39,12 @@ importers:
       solid-js:
         specifier: 1.9.2
         version: 1.9.2
+      tailwindcss:
+        specifier: '3.4.13 '
+        version: 3.4.13
+      tailwindcss-animate:
+        specifier: 1.0.7
+        version: 1.0.7(tailwindcss@3.4.13)
       tsup:
         specifier: 7.2.0
         version: 7.2.0(postcss@8.4.47)(typescript@5.5.3)
@@ -501,11 +498,6 @@ packages:
     peerDependencies:
       solid-js: ^1.6.12
 
-  '@solid-primitives/set@0.4.4':
-    resolution: {integrity: sha512-2eCJr3gz7S0PxII1smrw+0kwjyjeUB8HQ8QRzOmLX8sfy/QRiD87R44aNtmfGrmbS+JQ24epcT5gDnJmE45PVg==}
-    peerDependencies:
-      solid-js: ^1.6.12
-
   '@solid-primitives/static-store@0.0.8':
     resolution: {integrity: sha512-ZecE4BqY0oBk0YG00nzaAWO5Mjcny8Fc06CdbXadH9T9lzq/9GefqcSe/5AtdXqjvY/DtJ5C6CkcjPZO0o/eqg==}
     peerDependencies:
@@ -851,9 +843,6 @@ packages:
   hasown@2.0.2:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
-
-  hotscript@1.0.12:
-    resolution: {integrity: sha512-ANWgLMEhhfmmUsAkmJR6eclnVMC7KrDAAtOxWYN7PclUr1N5P9irs3WVJvMT/NpUxOXluYXj5JgyBG0iuKW5+Q==}
 
   html-entities@2.3.3:
     resolution: {integrity: sha512-DV5Ln36z34NNTDgnz0EWGBLZENelNAtkiFA4kyNOG2tDI6Mz1uSWiq1wAKdyjnJwyDiDO7Fa2SO1CTxPXL8VxA==}
@@ -1242,11 +1231,6 @@ packages:
   slash@4.0.0:
     resolution: {integrity: sha512-3dOsAHXXUkQTpOYcoAxLIorMTp4gIQr5IW3iVb7A7lFIp0VHhnynm9izx6TssdrIcVIESAlVjtnO2K8bg+Coew==}
     engines: {node: '>=12'}
-
-  smorf@1.0.0:
-    resolution: {integrity: sha512-O+vPmljqbSGFRrSGqMyT+A9s5wjJHdGI81v4svGQsW8muRqelw2XDRKPvex9+dnTgze3/43gZXq3VSU5+LIPug==}
-    peerDependencies:
-      solid-js: 1.7.3
 
   solid-dismissible@0.1.1:
     resolution: {integrity: sha512-9kcKBJIMdS+586cA1g63HYWxKh3h89leeNHbPZ1csYjuni+NvPBtNr11l0iEX2AKKEt6FHk6qNhc/gjoYAW1pA==}
@@ -1926,11 +1910,6 @@ snapshots:
     dependencies:
       solid-js: 1.9.2
 
-  '@solid-primitives/set@0.4.4(solid-js@1.9.2)':
-    dependencies:
-      '@solid-primitives/trigger': 1.1.0(solid-js@1.9.2)
-      solid-js: 1.9.2
-
   '@solid-primitives/static-store@0.0.8(solid-js@1.9.2)':
     dependencies:
       '@solid-primitives/utils': 6.2.3(solid-js@1.9.2)
@@ -2289,8 +2268,6 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
-  hotscript@1.0.12: {}
-
   html-entities@2.3.3: {}
 
   human-signals@2.1.0: {}
@@ -2586,12 +2563,6 @@ snapshots:
   slash@3.0.0: {}
 
   slash@4.0.0: {}
-
-  smorf@1.0.0(solid-js@1.9.2):
-    dependencies:
-      '@solid-primitives/set': 0.4.4(solid-js@1.9.2)
-      hotscript: 1.0.12
-      solid-js: 1.9.2
 
   solid-dismissible@0.1.1(solid-js@1.9.2):
     dependencies:
