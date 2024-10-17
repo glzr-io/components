@@ -1,0 +1,39 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      draft-release:
+        type: boolean
+        default: false
+        description: Whether to publish the release as a draft.
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  id-token: write
+
+concurrency:
+  group: release
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: glzr-io/actions/setup-pnpm@main
+        with:
+          checkout: true
+          node-version: 20
+          fetch-depth: 0
+
+      - run: pnpm build
+
+      - uses: glzr-io/actions/semantic-release@main
+        with:
+          gh-publish: true
+          gh-draft-release: ${{ inputs.draft-release }}
+          gh-token: ${{ github.token }}
+          npm-publish: true
+          npm-token: ${{ secrets.NPM_TOKEN }}
+          npm-package-manager: pnpm
