@@ -32,13 +32,15 @@ export type NumberInputProps = WithOverride<
 export function NumberInput(props: NumberInputProps) {
   const [local, rest] = splitProps(props, [
     'class',
+    'onBlur',
+    'onChange',
+    'placeholder',
     ...FORM_INPUT_PROP_NAMES,
   ]);
 
   return (
     <_NumberField
       rawValue={local.value}
-      onRawValueChange={val => local.onChange?.(val)}
       class={cn(
         'relative rounded-md transition-shadow focus-within:outline-none focus-within:ring-[1.5px] focus-within:ring-ring',
         local.class,
@@ -46,10 +48,12 @@ export function NumberInput(props: NumberInputProps) {
       {...rest}
     >
       <_NumberField.Input
+        placeholder={local.placeholder}
+        onChange={e => local.onChange?.(e.currentTarget.valueAsNumber)}
         class={
           'flex h-9 w-full rounded-md border border-input bg-transparent px-10 py-1 text-center text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50'
         }
-        onBlur={() => props.onBlur?.()}
+        onBlur={() => local.onBlur?.()}
       />
 
       <_NumberField.DecrementTrigger
