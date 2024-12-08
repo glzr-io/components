@@ -50,7 +50,7 @@ export function NumberInput(props: NumberInputProps) {
     >
       <_NumberField.Input
         placeholder={local.placeholder}
-        onChange={e => local.onChange?.(e.currentTarget.valueAsNumber)}
+        onChange={e => local.onChange?.(Number(e.currentTarget.value))}
         class={
           'flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-left text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50'
         }
