@@ -3,6 +3,7 @@ export * from './alert-dialog';
 export * from './alert';
 export * from './badge';
 export * from './button';
+export * from './breadcrumb';
 export * from './card';
 export * from './carousel';
 export * from './checkbox-input';
