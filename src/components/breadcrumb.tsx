@@ -1,6 +1,9 @@
 import {
+  For,
+  Show,
   splitProps,
   type ComponentProps,
+  type JSXElement,
   type ParentComponent,
 } from 'solid-js';
 import { IconChevronRight, IconDots } from '@tabler/icons-solidjs';
@@ -111,3 +114,54 @@ export const BreadcrumbEllipsis: ParentComponent<
     </span>
   );
 };
+
+export type BreadcrumbEntry = {
+  /**
+   * Content to display (string or JSX).
+   **/
+  content: JSXElement;
+
+  /**
+   * Href for navigation.
+   **/
+  href: string;
+};
+
+export interface BreadcrumbsProps {
+  /**
+   * Array of items to display in the breadcrumb.
+   **/
+  entries: BreadcrumbEntry[];
+}
+
+export function Breadcrumbs(props: BreadcrumbsProps) {
+  return (
+    <Breadcrumb>
+      <BreadcrumbList>
+        <For each={props.entries}>
+          {(entry, index) => (
+            <>
+              <BreadcrumbItem>
+                <BreadcrumbLink
+                  href={entry.href}
+                  onClick={e => {
+                    // Skip navigation if the current entry is the last one.
+                    if (index() === props.entries.length - 1) {
+                      e.preventDefault();
+                    }
+                  }}
+                >
+                  {entry.content}
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+
+              <Show when={index() !== props.entries.length - 1}>
+                <BreadcrumbSeparator />
+              </Show>
+            </>
+          )}
+        </For>
+      </BreadcrumbList>
+    </Breadcrumb>
+  );
+}
