@@ -7,6 +7,7 @@ export * from './breadcrumb';
 export * from './card';
 export * from './carousel';
 export * from './checkbox-input';
+export * from './chip-input';
 export * from './collapsible';
 export * from './combobox';
 export * from './context-menu';
