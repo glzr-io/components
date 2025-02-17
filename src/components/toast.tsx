@@ -7,7 +7,10 @@ import type {
   ToastRootProps,
   ToastTitleProps,
 } from '@kobalte/core/toast';
-import { Toast as ToastPrimitive } from '@kobalte/core/toast';
+import {
+  Toast as ToastPrimitive,
+  toaster as _toaster,
+} from '@kobalte/core/toast';
 import { type VariantProps, cva } from 'class-variance-authority';
 import type {
   ComponentProps,
@@ -170,4 +173,26 @@ export const ToastProgress: VoidComponent = () => {
       <ToastPrimitive.ProgressFill class="h-full w-[--kb-toast-progress-fill-width] bg-primary transition-all duration-150 ease-linear group-[.destructive]:bg-destructive-foreground" />
     </ToastPrimitive.ProgressTrack>
   );
+};
+
+export type ShowToastProps = {
+  title: string;
+  description: string;
+  variant?: 'default' | 'destructive';
+};
+
+export const toaster = {
+  show({ title, description, variant }: ShowToastProps) {
+    return _toaster.show(props => (
+      <Toast toastId={props.toastId} variant={variant ?? 'default'}>
+        <ToastContent>
+          <ToastTitle>{title}</ToastTitle>
+          <ToastDescription>{description}</ToastDescription>
+        </ToastContent>
+      </Toast>
+    ));
+  },
+  dismiss(id: number) {
+    _toaster.dismiss(id);
+  },
 };
