@@ -119,7 +119,7 @@ export type BreadcrumbEntry = {
   /**
    * Content to display (string or JSX).
    **/
-  content: JSXElement;
+  content: string | (() => JSXElement);
 
   /**
    * Href for navigation.
@@ -127,16 +127,18 @@ export type BreadcrumbEntry = {
   href: string;
 };
 
-export interface BreadcrumbsProps {
+export type BreadcrumbsProps = {
   /**
    * Array of items to display in the breadcrumb.
    **/
   entries: BreadcrumbEntry[];
-}
+} & ComponentProps<'nav'>;
 
 export function Breadcrumbs(props: BreadcrumbsProps) {
+  const [_, rest] = splitProps(props, ['entries']);
+
   return (
-    <Breadcrumb>
+    <Breadcrumb {...rest}>
       <BreadcrumbList>
         <For each={props.entries}>
           {(entry, index) => (
@@ -151,7 +153,9 @@ export function Breadcrumbs(props: BreadcrumbsProps) {
                     }
                   }}
                 >
-                  {entry.content}
+                  {typeof entry.content === 'string'
+                    ? entry.content
+                    : entry.content()}
                 </BreadcrumbLink>
               </BreadcrumbItem>
 
