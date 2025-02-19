@@ -35,7 +35,7 @@ export interface FormFieldProps extends ComponentProps<'div'> {
   /**
    * Whether the control is disabled.
    */
-  isDisabled?: boolean;
+  disabled?: boolean;
 
   children: JSXElement;
 }
@@ -45,7 +45,7 @@ export const FORM_FIELD_PROP_NAMES = [
   'description',
   'error',
   'name',
-  'isDisabled',
+  'disabled',
 ] as const;
 
 export function FormField(props: FormFieldProps) {
@@ -59,28 +59,32 @@ export function FormField(props: FormFieldProps) {
   const error = createMemo(() => props.error);
 
   return (
-    <div {...others} class={cn('mb3', others.class)} role="group">
+    <div {...others} class={cn('mb-3', others.class)} role="group">
       <Show when={label()}>
-        <FormLabel for={props.name}>{label()}</FormLabel>
+        <FormLabel for={props.name} disabled={props.disabled}>
+          {label()}
+        </FormLabel>
       </Show>
 
       {/* Template for the input element. */}
       {props.children}
 
       <Show when={error()}>
-        <FormError>{error()}</FormError>
+        <FormError disabled={props.disabled}>{error()}</FormError>
       </Show>
 
       {/* Show description text when there isn't an error. */}
       <Show when={!error() && description()}>
-        <FormDescription>{description()}</FormDescription>
+        <FormDescription disabled={props.disabled}>
+          {description()}
+        </FormDescription>
       </Show>
     </div>
   );
 }
 
 const labelVariants = cva(
-  'text-sm data-[disabled]:cursor-not-allowed data-[disabled]:opacity-70 font-medium',
+  'block text-sm data-[disabled]:cursor-not-allowed data-[disabled]:opacity-70 font-medium mb-1',
   {
     variants: {
       label: {
@@ -101,15 +105,17 @@ const labelVariants = cva(
 
 export interface FormLabelProps extends ComponentProps<'label'> {
   for?: string;
+  disabled?: boolean;
   children: string | JSXElement;
 }
 
 export function FormLabel(props: FormLabelProps) {
-  const [_, others] = splitProps(props, ['for', 'children']);
+  const [_, others] = splitProps(props, ['for', 'children', 'disabled']);
 
   return (
     <label
       {...others}
+      data-disabled={props.disabled}
       class={cn(labelVariants(), others.class)}
       for={props.for}
     >
@@ -120,14 +126,16 @@ export function FormLabel(props: FormLabelProps) {
 
 export interface FormErrorProps extends ComponentProps<'span'> {
   children: string | JSXElement;
+  disabled?: boolean;
 }
 
 export function FormError(props: FormErrorProps) {
-  const [_, others] = splitProps(props, ['children']);
+  const [_, others] = splitProps(props, ['children', 'disabled']);
 
   return (
     <small
       {...others}
+      data-disabled={props.disabled}
       class={cn(labelVariants({ error: true }), others.class)}
     >
       {props.children}
@@ -137,16 +145,19 @@ export function FormError(props: FormErrorProps) {
 
 export interface FormDescriptionProps extends ComponentProps<'span'> {
   children: string | JSXElement;
+  disabled?: boolean;
 }
 
 export function FormDescription(props: FormDescriptionProps) {
-  const [_, others] = splitProps(props, ['children']);
+  const [_, others] = splitProps(props, ['children', 'disabled']);
 
   return (
     <small
       {...others}
+      data-disabled={props.disabled}
       class={cn(
         labelVariants({ description: true, label: false }),
+        'mt-1',
         others.class,
       )}
     >
@@ -173,6 +184,7 @@ export const FORM_INPUT_PROP_NAMES = [
   'ref',
   'onChange',
   'onBlur',
+  'disabled',
 ] as const;
 
 export interface FormInputProps<T, U> {

@@ -1,4 +1,9 @@
-import { type ComponentProps, createSignal, splitProps } from 'solid-js';
+import {
+  type ComponentProps,
+  createSignal,
+  Show,
+  splitProps,
+} from 'solid-js';
 import { IconX } from '@tabler/icons-solidjs';
 
 import type { WithOverride } from '~/utils';
@@ -20,6 +25,7 @@ export const ChipField = makeFieldComponent({
 export interface ChipInputOptions
   extends FormInputProps<HTMLInputElement, string[]> {
   placeholder?: string;
+  disabled?: boolean;
 }
 
 export type ChipInputProps = WithOverride<
@@ -31,6 +37,7 @@ export function ChipInput(props: ChipInputProps) {
   const [_, rest] = splitProps(props, [
     ...FORM_INPUT_PROP_NAMES,
     'placeholder',
+    'disabled',
   ]);
 
   const [inputValue, setInputValue] = createSignal('');
@@ -54,6 +61,7 @@ export function ChipInput(props: ChipInputProps) {
   return (
     <div {...rest}>
       <TextInput
+        disabled={props.disabled}
         onBlur={() => props.onBlur?.()}
         onKeyDown={onKeyDown}
         onChange={setInputValue}
@@ -61,18 +69,21 @@ export function ChipInput(props: ChipInputProps) {
         value={inputValue()}
       />
 
-      <div class="flex flex-wrap gap-2">
-        {props.value?.map(chip => (
-          <Badge
-            variant="secondary"
-            class="cursor-pointer"
-            onClick={() => removeChip(chip)}
-          >
-            {chip}
-            <IconX class="ml-1 h-3 w-3" />
-          </Badge>
-        ))}
-      </div>
+      <Show when={props.value?.length}>
+        <div class="flex flex-wrap gap-2 mt-2">
+          {props.value?.map(chip => (
+            <Badge variant="secondary">
+              {chip}
+              {!props.disabled && (
+                <IconX
+                  onClick={() => removeChip(chip)}
+                  class="ml-1 h-3 w-3 cursor-pointer"
+                />
+              )}
+            </Badge>
+          ))}
+        </div>
+      </Show>
     </div>
   );
 }
