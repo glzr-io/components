@@ -16,7 +16,9 @@ export const SwitchField = makeFieldComponent({
 });
 
 export interface SwitchInputOptions
-  extends FormInputProps<HTMLInputElement, boolean> {}
+  extends FormInputProps<HTMLInputElement, boolean> {
+  disabled?: boolean;
+}
 
 export type SwitchInputProps = WithOverride<
   ComponentProps<'div'>,
@@ -30,6 +32,7 @@ export function SwitchInput(props: SwitchInputProps) {
     <_Switch
       checked={local.value}
       onChange={val => local.onChange?.(val)}
+      disabled={local.disabled}
       {...rest}
     >
       <_Switch.Input

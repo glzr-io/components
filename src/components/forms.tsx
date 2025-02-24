@@ -115,7 +115,7 @@ export function FormLabel(props: FormLabelProps) {
   return (
     <label
       {...others}
-      data-disabled={props.disabled}
+      data-disabled={props.disabled || null}
       class={cn(labelVariants(), others.class)}
       for={props.for}
     >
@@ -135,7 +135,7 @@ export function FormError(props: FormErrorProps) {
   return (
     <small
       {...others}
-      data-disabled={props.disabled}
+      data-disabled={props.disabled || null}
       class={cn(labelVariants({ error: true }), others.class)}
     >
       {props.children}
@@ -154,7 +154,7 @@ export function FormDescription(props: FormDescriptionProps) {
   return (
     <small
       {...others}
-      data-disabled={props.disabled}
+      data-disabled={props.disabled || null}
       class={cn(
         labelVariants({ description: true, label: false }),
         'mt-1',

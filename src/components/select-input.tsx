@@ -51,6 +51,7 @@ interface SelectInputOptions<T>
   placeholder?: string;
   options: SelectOption<T>[];
   required?: boolean;
+  disabled?: boolean;
 }
 
 export type SelectInputProps<T> = WithOverride<
@@ -73,6 +74,7 @@ export function SelectInput<T>(props: SelectInputProps<T>) {
   return (
     <_Select
       {...rest}
+      disabled={props.disabled}
       options={props.options}
       optionValue="value"
       optionTextValue={option =>

@@ -16,7 +16,9 @@ export const CheckboxField = makeFieldComponent({
 });
 
 export interface CheckboxInputOptions
-  extends FormInputProps<HTMLInputElement, boolean> {}
+  extends FormInputProps<HTMLInputElement, boolean> {
+  disabled?: boolean;
+}
 
 export type CheckboxInputProps = WithOverride<
   ComponentProps<'div'>,
@@ -30,6 +32,7 @@ export function CheckboxInput(props: CheckboxInputProps) {
     <_Checkbox
       checked={props.value}
       onChange={value => props.onChange?.(value)}
+      disabled={props.disabled}
       {...rest}
     >
       <_Checkbox.Input

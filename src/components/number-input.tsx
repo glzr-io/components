@@ -23,6 +23,7 @@ export const NumberField = makeFieldComponent({
 interface NumberInputOptions
   extends FormInputProps<HTMLInputElement, number> {
   placeholder?: string;
+  disabled?: boolean;
 }
 
 export type NumberInputProps = WithOverride<
@@ -42,6 +43,7 @@ export function NumberInput(props: NumberInputProps) {
   return (
     <_NumberField
       rawValue={local.value}
+      disabled={local.disabled}
       class={cn(
         'relative rounded-md transition-shadow focus-within:outline-none focus-within:ring-[1.5px] focus-within:ring-ring',
         local.class,
